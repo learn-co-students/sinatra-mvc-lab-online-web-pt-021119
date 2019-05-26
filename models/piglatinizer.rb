@@ -1,16 +1,17 @@
 class PigLatinizer
   attr_accessor :text
 
-  def initialize(text)
+  def words(text)
     @text = text.split(" ")
+    piglatinize
   end
 
-  def piglatinized
+  def piglatinize
     pl = text.collect do |w|
-      if w.downcase.start_with?('a','e','i','o','u')
-        new_text = "#{text}way"
+      if w.start_with?('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')
+        new_text = "#{w}way"
       else
-        text_arr = w.downcase.split(/([aeiou].*)/)
+        text_arr = w.split(/([aeiouAEIOU].*)/)
         new_text = "#{text_arr[1]}#{text_arr[0]}ay"
       end
     end
