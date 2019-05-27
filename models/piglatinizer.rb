@@ -16,14 +16,12 @@ class PigLatinizer
     end
 
     sentence = single_words.collect do |word|
-      binding.pry
       letters = word.split('')
       first_vowel = letters.detect {|letter| letter.match(/[AEIOUYaeiouy]/)}
-      binding.pry
       first_vowel_index = letters.index(first_vowel)
       chunk1 = letters.slice(first_vowel_index..-1) # => ["o", "r", "k"]
-      chunk2 = letters - chunk1 # => ["p"]
-      binding.pry
+      chunk2 = letters # => ["p"]
+      chunk2.pop(chunk1.length)
       unless chunk2.empty?
         word = chunk1.join + chunk2.join + "ay" # => "orkpay"
       else
