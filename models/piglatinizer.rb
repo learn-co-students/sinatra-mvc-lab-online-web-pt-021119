@@ -1,30 +1,32 @@
 require 'pry'
 
-class Piglatinizer
+class PigLatinizer
   attr_accessor :phrase
 
-  def initialize(phrase)
+  def initialize(phrase = nil)
     @phrase = phrase
   end
 
-  # for each word
-  # if the word's first letter is a consonant, move it to the end of the word
-  # then add 'way' to the word
+  def piglatinize(word)
+    letters = word.split('')
 
-  # "phrase"=> "He was an old man who fished alone in a skiff in the Gulf Stream and he had gone eighty four days now without taking a fish"
-
-  # text.scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXZ]/)
-
-  def piglatinize
-    sentence = @phrase.split(' ')
-    new_sentence = []
-
-    sentence.each do |sen|
+    slicer = []
+    letters.each do |letter|
       binding.pry
-
-      sen[0]
+      if letter.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXZ]/)
+        slicer << letter
+      end
     end
-  end
 
+    binding.pry
+
+
+    # word = word.join
+    # unless append.empty?
+    #   word = word + append + "ay"
+    # else
+    #   word = word + "way"
+    # end
+  end
 
 end
